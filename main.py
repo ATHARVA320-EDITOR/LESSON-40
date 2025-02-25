@@ -43,4 +43,18 @@ class RestaurantOrderManager:
                                          textvariable=self.currency_var,
                                          state="readonly",
                                          width=18,
-                                        )
+                                         values=('USD', 'INR'))
+        currency_dropdown.grid(row=len(self.menu_items)+ 1,
+                                column = 1,
+                                padx=10,
+                                pady=5)
+        currency_dropdown.current(0)
+        self.currency_var.trace('w', self.update_menu_prices)
+        order_button = ttk.Button(frame,
+                                    text = "Place order",
+                                    command=self.place_order)
+        order_button.grid(row=len(self.menu_items)+ 2,
+                                columnspan = 1,
+                                padx=10,
+                                pady=10)
+                                
